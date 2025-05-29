@@ -13,7 +13,7 @@ export const questions = pgTable("questions", {
 export const ratings = pgTable("ratings", {
   id: serial("id").primaryKey(),
   questionId: integer("question_id").notNull(),
-  rating: integer("rating").notNull(), // 1-5 stars
+  rating: integer("rating").notNull(), // 1 = thumbs down, 2 = thumbs up
   sessionId: text("session_id").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });

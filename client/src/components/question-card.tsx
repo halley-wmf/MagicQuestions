@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { RefreshCw } from "lucide-react";
 import { Question } from "@shared/schema";
-import StarRating from "./star-rating";
+import ThumbsRating from "./star-rating";
 
 interface QuestionCardProps {
   question: Question;
@@ -61,7 +61,7 @@ export default function QuestionCard({ question, onNewQuestion, onRating }: Ques
                   <p className="text-sm text-muted-foreground mb-3">
                     How engaging was this question?
                   </p>
-                  <StarRating
+                  <ThumbsRating
                     onRating={onRating}
                     size="lg"
                   />

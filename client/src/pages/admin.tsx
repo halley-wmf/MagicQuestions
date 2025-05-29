@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Plus, Edit2, Trash2, Star, BarChart3 } from "lucide-react";
+import { ArrowLeft, Plus, Edit2, Trash2, ThumbsUp, ThumbsDown, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
@@ -156,20 +156,32 @@ export default function AdminPage() {
     return <Badge>Active</Badge>;
   };
 
-  const renderStarRating = (rating: number) => {
+  const renderThumbsRating = (avgRating: number, totalRatings: number) => {
+    if (totalRatings === 0) {
+      return (
+        <div className="flex items-center space-x-2">
+          <ThumbsUp className="h-4 w-4 text-gray-300" />
+          <ThumbsDown className="h-4 w-4 text-gray-300" />
+          <span className="text-sm text-muted-foreground">No ratings</span>
+        </div>
+      );
+    }
+
+    // Calculate percentages (avgRating would be between 1-2, where 1=thumbs down, 2=thumbs up)
+    const thumbsUpPercentage = Math.round(((avgRating - 1) * 100));
+    const thumbsDownPercentage = 100 - thumbsUpPercentage;
+    
     return (
-      <div className="flex items-center space-x-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star
-            key={star}
-            className={`h-4 w-4 ${
-              star <= rating ? "text-yellow-400 fill-current" : "text-gray-300"
-            }`}
-          />
-        ))}
-        <span className="text-sm text-muted-foreground ml-2">
-          {rating > 0 ? rating.toFixed(1) : "No ratings"}
-        </span>
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-1">
+          <ThumbsUp className="h-4 w-4 text-green-600" />
+          <span className="text-sm text-muted-foreground">{thumbsUpPercentage}%</span>
+        </div>
+        <div className="flex items-center space-x-1">
+          <ThumbsDown className="h-4 w-4 text-red-600" />
+          <span className="text-sm text-muted-foreground">{thumbsDownPercentage}%</span>
+        </div>
+        <span className="text-xs text-muted-foreground">({totalRatings} rating{totalRatings !== 1 ? 's' : ''})</span>
       </div>
     );
   };
@@ -295,7 +307,7 @@ export default function AdminPage() {
                     }
                   </p>
                 </div>
-                <Star className="h-8 w-8 text-yellow-500" />
+                <ThumbsUp className="h-8 w-8 text-green-500" />
               </div>
             </CardContent>
           </Card>
@@ -348,10 +360,7 @@ export default function AdminPage() {
                         
                         <div className="flex items-center space-x-6 text-sm text-muted-foreground">
                           <div className="flex items-center space-x-1">
-                            {renderStarRating(question.avgRating)}
-                          </div>
-                          <div>
-                            {question.totalRatings} rating{question.totalRatings !== 1 ? 's' : ''}
+                            {renderThumbsRating(question.avgRating, question.totalRatings)}
                           </div>
                         </div>
                       </div>
