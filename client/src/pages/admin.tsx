@@ -299,11 +299,11 @@ export default function AdminPage() {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Avg Rating</p>
+                  <p className="text-sm font-medium text-muted-foreground">Positive Rating</p>
                   <p className="text-2xl font-bold">
                     {questions.length > 0 
-                      ? (questions.reduce((sum, q) => sum + q.avgRating, 0) / questions.length).toFixed(1)
-                      : "0.0"
+                      ? Math.round(((questions.reduce((sum, q) => sum + q.avgRating, 0) / questions.length) - 1) * 100) + "%"
+                      : "0%"
                     }
                   </p>
                 </div>
