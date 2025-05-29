@@ -88,8 +88,10 @@ export class MemStorage implements IStorage {
 
     sampleQuestions.forEach(q => {
       const question: Question = {
-        ...q,
         id: this.currentQuestionId++,
+        text: q.text,
+        category: q.category || "general",
+        isActive: q.isActive ?? true,
         createdAt: new Date(),
       };
       this.questions.set(question.id, question);
@@ -112,8 +114,10 @@ export class MemStorage implements IStorage {
 
   async createQuestion(insertQuestion: InsertQuestion): Promise<Question> {
     const question: Question = {
-      ...insertQuestion,
       id: this.currentQuestionId++,
+      text: insertQuestion.text,
+      category: insertQuestion.category || "general",
+      isActive: insertQuestion.isActive ?? true,
       createdAt: new Date(),
     };
     this.questions.set(question.id, question);

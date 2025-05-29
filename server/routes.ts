@@ -33,6 +33,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Random question endpoint - must come before :id route
+  app.get("/api/questions/random", async (req, res) => {
+    try {
+      const excludeIds = req.query.exclude ? 
+        String(req.query.exclude).split(',').map(id => parseInt(id)).filter(id => !isNaN(id)) : 
+        [];
+      
+      const questions = await storage.getActiveQuestions();
+      const availableQuestions = questions.filter(q => !excludeIds.includes(q.id));
+      
+      if (availableQuestions.length === 0) {
+        // If all questions are excluded, return any active question
+        const fallbackQuestions = questions;
+        if (fallbackQuestions.length === 0) {
+          return res.status(404).json({ message: "No active questions available" });
+        }
+        const randomIndex = Math.floor(Math.random() * fallbackQuestions.length);
+        return res.json(fallbackQuestions[randomIndex]);
+      }
+      
+      const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+      res.json(availableQuestions[randomIndex]);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch random question" });
+    }
+  });
+
   app.get("/api/questions/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
@@ -89,32 +116,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Random question endpoint
-  app.get("/api/questions/random", async (req, res) => {
-    try {
-      const excludeIds = req.query.exclude ? 
-        String(req.query.exclude).split(',').map(id => parseInt(id)).filter(id => !isNaN(id)) : 
-        [];
-      
-      const questions = await storage.getActiveQuestions();
-      const availableQuestions = questions.filter(q => !excludeIds.includes(q.id));
-      
-      if (availableQuestions.length === 0) {
-        // If all questions are excluded, return any active question
-        const fallbackQuestions = questions;
-        if (fallbackQuestions.length === 0) {
-          return res.status(404).json({ message: "No active questions available" });
-        }
-        const randomIndex = Math.floor(Math.random() * fallbackQuestions.length);
-        return res.json(fallbackQuestions[randomIndex]);
-      }
-      
-      const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-      res.json(availableQuestions[randomIndex]);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch random question" });
-    }
-  });
+
 
   // Ratings routes
   app.post("/api/ratings", async (req, res) => {
