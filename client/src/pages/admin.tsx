@@ -268,7 +268,7 @@ export default function AdminPage() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
@@ -291,23 +291,6 @@ export default function AdminPage() {
                 <div className="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
                   <div className="w-3 h-3 bg-green-600 rounded-full"></div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">Positive Rating</p>
-                  <p className="text-2xl font-bold">
-                    {questions.length > 0 
-                      ? Math.round(((questions.reduce((sum, q) => sum + q.avgRating, 0) / questions.length) - 1) * 100) + "%"
-                      : "0%"
-                    }
-                  </p>
-                </div>
-                <ThumbsUp className="h-8 w-8 text-green-500" />
               </div>
             </CardContent>
           </Card>
