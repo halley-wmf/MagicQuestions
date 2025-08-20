@@ -56,6 +56,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const randomIndex = Math.floor(Math.random() * availableQuestions.length);
       res.json(availableQuestions[randomIndex]);
     } catch (error) {
+      console.error("Error fetching random question:", error);
       res.status(500).json({ message: "Failed to fetch random question" });
     }
   });
