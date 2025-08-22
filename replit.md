@@ -1,6 +1,6 @@
 # Overview
 
-This is a full-stack question rating game application built with React and Express. The app presents users with thought-provoking questions that they can rate with thumbs up/down, similar to a "Would You Rather" style game but with single questions. The system includes both a user-facing game interface and an admin panel for managing questions. The application uses a modern tech stack with TypeScript, Tailwind CSS, and shadcn/ui components for a polished user experience.
+This is a full-stack magical questions team-building game built with React and Express. The app helps remote teams connect through thought-provoking questions that spark meaningful conversations. Users can rate questions with thumbs up/down voting and administrators can manage the question pool. The application currently has 15 default questions covering topics from lighthearted fun to thoughtful reflection. The system includes both a user-facing game interface and an admin panel for managing questions. The application uses a modern tech stack with TypeScript, Tailwind CSS, and shadcn/ui components for a polished user experience.
 
 # User Preferences
 
