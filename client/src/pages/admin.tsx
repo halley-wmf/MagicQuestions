@@ -244,6 +244,8 @@ export default function AdminPage() {
                       <SelectItem value="experiences">Experiences</SelectItem>
                       <SelectItem value="reflection">Reflection</SelectItem>
                       <SelectItem value="curiosity">Curiosity</SelectItem>
+                      <SelectItem value="fun">Fun</SelectItem>
+                      <SelectItem value="childhood">Childhood</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

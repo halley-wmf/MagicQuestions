@@ -165,6 +165,31 @@ export class MemStorage implements IStorage {
         category: "curiosity",
         isActive: true,
       },
+      {
+        text: "When was the last time you used glitter?",
+        category: "fun",
+        isActive: true,
+      },
+      {
+        text: "What is one rule you had growing up that looking back now, you think was totally unnecessary or even a little funny?",
+        category: "childhood",
+        isActive: true,
+      },
+      {
+        text: "What's a gift someone gave you that offended you?",
+        category: "experiences",
+        isActive: true,
+      },
+      {
+        text: "What's the best gift you ever received? What made it so special?",
+        category: "gratitude",
+        isActive: true,
+      },
+      {
+        text: "What's one quirky thing you love about where you live, that most people wouldn't know about?",
+        category: "personal",
+        isActive: true,
+      },
     ];
 
     sampleQuestions.forEach(q => {
