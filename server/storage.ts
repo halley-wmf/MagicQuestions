@@ -161,7 +161,7 @@ export class MemStorage implements IStorage {
         isActive: true,
       },
       {
-        text: "What's something you're curious about that you'd love to explore more?",
+        text: "If you could immediately gain any creative skill, what would you choose?",
         category: "curiosity",
         isActive: true,
       },
@@ -188,6 +188,81 @@ export class MemStorage implements IStorage {
       {
         text: "What's one quirky thing you love about where you live, that most people wouldn't know about?",
         category: "personal",
+        isActive: true,
+      },
+      {
+        text: "When was the last time you wore a costume? What were you dressed as, and what was it for?",
+        category: "fun",
+        isActive: true,
+      },
+      {
+        text: "What is your favorite way to eat a potato? What is your least favorite?",
+        category: "fun",
+        isActive: true,
+      },
+      {
+        text: "What is your next goal for life outside of work?",
+        category: "personal",
+        isActive: true,
+      },
+      {
+        text: "What's something you believed as a child that you're slightly embarrassed about now?",
+        category: "childhood",
+        isActive: true,
+      },
+      {
+        text: "What's something you're unreasonably competitive about?",
+        category: "personal",
+        isActive: true,
+      },
+      {
+        text: "What's the most useless talent you have?",
+        category: "fun",
+        isActive: true,
+      },
+      {
+        text: "What's a unique tradition from your family or culture that you love?",
+        category: "personal",
+        isActive: true,
+      },
+      {
+        text: "What's something you tried once and immediately knew wasn't for you?",
+        category: "experiences",
+        isActive: true,
+      },
+      {
+        text: "What's a compliment you've received from a stranger that really stuck with you?",
+        category: "gratitude",
+        isActive: true,
+      },
+      {
+        text: "If you won the lottery, how would you spend your time?",
+        category: "imagination",
+        isActive: true,
+      },
+      {
+        text: "If you immediatley had to pivot into another career, what would you do instead of your current job?",
+        category: "imagination",
+        isActive: true,
+      },
+      {
+        text: "What's something that always makes you feel like a kid again?",
+        category: "childhood",
+        isActive: true,
+      },
+      {
+        text: "What's something new you want to try or achieve in the next year?",
+        category: "growth",
+        isActive: true,
+      },
+      {
+        text: "What do you enjoy doing that is both fun and makes you sweat?",
+        category: "growth",
+        isActive: true,
+      },
+      {
+        text: "What's your favorite place that most people have probabaly never heard of?",
+        category: "experiences",
         isActive: true,
       },
     ];
